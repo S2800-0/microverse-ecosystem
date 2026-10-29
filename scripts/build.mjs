@@ -1,0 +1,3 @@
+import {readdir,mkdir,readFile,writeFile} from 'node:fs/promises';
+import {join} from 'node:path';import {stripTypeScriptTypes} from 'node:module';
+async function build(from,to){await mkdir(to,{recursive:true});for(const entry of await readdir(from,{withFileTypes:true})){const source=join(from,entry.name),dest=join(to,entry.name.replace(/\.ts$/,'.js'));if(entry.isDirectory())await build(source,dest);else if(/\.(ts|js)$/.test(entry.name)){let code=await readFile(source,'utf8');if(entry.name.endsWith('.ts'))code=stripTypeScriptTypes(code);await writeFile(dest,code.replace(/(['"][^'"\n]+)\.ts(['"])/g,'$1.js$2'));}}}await build('src','dist');

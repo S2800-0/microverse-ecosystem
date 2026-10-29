@@ -1,0 +1,58 @@
+{
+  "sourceRepository": "https://github.com/S2800-0/microverse",
+  "sourceRevision": "4664ad693dbde0a7a04aee28513f7d8361c76f5e",
+  "files": [
+    {
+      "path": "src/creature/contract.js",
+      "sha256": "e84f14b4eedb7038442e642370744ff0d4681a7cc2f188122da956784d42d5d8"
+    },
+    {
+      "path": "src/investigation/changes.js",
+      "sha256": "ac0dab02180617a303a4f63d9f3ec9d1da16156c9d202ee11c8079e5643431ea"
+    },
+    {
+      "path": "src/place/contract.js",
+      "sha256": "fe22c5a334387780af180e77a0faca2fa6c84ed1c52e9312acb76036145248f1"
+    },
+    {
+      "path": "src/scene/controller.ts",
+      "sha256": "11791977f6637ecb23be52431afefea760153753760202e03f61c224f9ebab3c"
+    },
+    {
+      "path": "src/scene/experiment.ts",
+      "sha256": "9df11f81771ef53ed18d44f9fa2e85ace8ae6b6c7bb530f37db5e86bed4e2ad6"
+    },
+    {
+      "path": "src/scene/snapshot.ts",
+      "sha256": "a591b46cbfe8ceef75af34038c332a779fbbe68c9be94ee2af1e3ed68d04b96a"
+    },
+    {
+      "path": "src/scene/terrain.js",
+      "sha256": "a786469c8275051cf8eb6cf101139dd670a388393c08219954bec91907099830"
+    },
+    {
+      "path": "src/sim/engine.ts",
+      "sha256": "2c7283df522f7a2c07b127fc58132a75ede6e5210d6f1c1d0c8190f7a5a24779"
+    },
+    {
+      "path": "src/sim/scene-ecology.ts",
+      "sha256": "f507dd6d4b03fe5917f88b8b7a679caafe8afe18a4735225a1bb1994aa1dc87c"
+    },
+    {
+      "path": "src/sim/snapshot.ts",
+      "sha256": "186ac5bb2fef203d75f4ddcad0e02052632f59543ef4e77cd4e04a5cf9c2e939"
+    },
+    {
+      "path": "tests/companions.test.mjs",
+      "sha256": "37b0e0d1d8a82efddffcdbc0099bc1e1dd9fed604c1ad0689b48f10b9a19bd30"
+    },
+    {
+      "path": "tests/replay.test.mjs",
+      "sha256": "cf31b672c7ae407e4cb1404a6f54f5b516d0aecbb8b05c696fa7f0a3516d3421"
+    },
+    {
+      "path": "tests/simulation.test.mjs",
+      "sha256": "04af2ebfe0818705235d5e8591cb75489d707fd298332cf468e07fc82bccc367"
+    }
+  ]
+}
