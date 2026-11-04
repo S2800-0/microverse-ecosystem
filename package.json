@@ -5,6 +5,24 @@
   "license": "MIT",
   "author": "Shahesta <shahesta0028@gmail.com>",
   "description": "Deterministic toy ecology, complete snapshots and reproducible experiment replay.",
+  "keywords": [
+    "ecology",
+    "simulation",
+    "deterministic",
+    "replay",
+    "snapshot",
+    "education",
+    "toy-model",
+    "javascript"
+  ],
+  "homepage": "https://github.com/S2800-0/microverse-ecosystem#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/S2800-0/microverse-ecosystem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/S2800-0/microverse-ecosystem/issues"
+  },
   "engines": {
     "node": ">=24"
   },

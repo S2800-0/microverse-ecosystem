@@ -1,40 +1,81 @@
 # Microverse Ecosystem
 
-A deterministic toy ecology engine with complete snapshots, paired interventions and exact replay continuation. No model key or browser is needed.
+[![Tests](https://github.com/S2800-0/microverse-ecosystem/actions/workflows/test.yml/badge.svg)](https://github.com/S2800-0/microverse-ecosystem/actions/workflows/test.yml) [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE) ![Node 24+](https://img.shields.io/badge/node-%3E%3D24-blue.svg) ![No runtime dependencies](https://img.shields.io/badge/runtime%20dependencies-0-lightgrey.svg)
 
-## Run it
+**A toy ecology engine with complete snapshots and exact replay, for running fair "what if" comparisons.**
 
-Use Node.js 24 or newer:
+Change one thing in a small simulated forest, and compare it against the same forest without the change. Both runs start from the same snapshot, so the change is the only difference. It needs no model key or browser.
 
-```sh
+## Features
+
+- **Deterministic:** the same seed gives the same run.
+- **Complete snapshots:** a snapshot includes the future random-generator state, so a run continues exactly after a JSON round trip.
+- **Paired experiments:** compare a changed world against an unchanged one from the same start.
+- **Readable rules:** a small curated forest with explicit diet, food, birth, mortality and immigration rules. One tick is one model week.
+
+## Quick start
+
+You need Node.js 24 or newer. There are no packages to install.
+
+```bash
 git clone https://github.com/S2800-0/microverse-ecosystem.git
 cd microverse-ecosystem
 npm test
 npm run demo
 ```
 
-`npm test` builds JavaScript exports and runs the extracted engine, companion and replay regressions. `npm run demo` runs a half-rainfall comparison and verifies exact continuation after a JSON round trip. No package dependencies need installation.
+The demo runs a half-rainfall comparison and checks that replay continues exactly:
 
-## Use the modules
+```text
+{
+  week: 13,
+  usual: { rabbit: 40, deer: 9, fox: 5, wolf: 3, dog: 0, cat: 0, penguin: 0 },
+  lessRain: { rabbit: 37, deer: 9, fox: 5, wolf: 3, dog: 0, cat: 0, penguin: 0 },
+  replayContinuation: 'exact'
+}
+```
+
+## Usage
+
+Run `npm run build` first, then import from `dist/index.js`:
 
 ```js
 import {createForestController, createExperiment} from './dist/index.js';
+
 const scene = createForestController({seed: 7});
 const experiment = createExperiment(scene.toSnapshot(), {
   kind: 'rain', rain: 0.5, durationWeeks: 52
 });
+
 const result = experiment.seek(13);
 console.log(result.baseline.counts, result.changed.counts);
 ```
 
-Build with `npm run build` before importing `dist/index.js`. There is no npm registry release; the source and build are in this repository. The package prepare script also builds when installed from GitHub with a compatible Node version.
+You can also install from GitHub with a compatible Node version, since the prepare script builds the package.
 
-One tick is one model week. The small curated forest uses explicit diet, food, birth, mortality and immigration rules. Dogs/cats are cared-for companions, not inferred ecological predators. Terrain is curated, not reconstructed from a photograph. Model parameters are illustrative and not calibrated for an outdoor site. A model comparison is not an environmental forecast or proof of causation in nature.
+## Limits
 
-Snapshots include future random-generator state. Replays may contain user-supplied names/images/notes; treat exported files as potentially private. The library ships no user data.
+- Parameters are illustrative and not calibrated for any outdoor site.
+- A comparison isn't an environmental forecast or proof of causation in nature.
+- Terrain is curated, not reconstructed from a photograph.
+- Dogs and cats are cared-for companions, not modelled as ecological predators.
+- Replays can contain names, images or notes that users supplied, so treat exported files as potentially private. The library itself ships no user data.
 
-## Source and licence
+## Status
 
-MIT for this project code. See LICENSE, NOTICE.md and SOURCE_MANIFEST.json. Extracted from the Microverse project, including previously disclosed pre-event prototype work and later refinements. No generated art, photos, model weights, credentials or third-party provider adapters are included. This is a reusable prototype, not a claim of external adoption.
+Version 0.1.0 is a reusable prototype. It isn't on npm, so use the source from this repository. It hasn't been adopted by outside projects yet.
 
-Use feature branches and pull requests for subsequent changes. Run npm test before proposing a change.
+## Part of Microverse
+
+This library was extracted from [Microverse](https://github.com/S2800-0/microverse), which turns a photo of a real place into a living little world. It includes work from the disclosed pre-event prototype plus later refinements. The other libraries are:
+
+- [**microverse-puppets**](https://github.com/S2800-0/microverse-puppets): Turns a transparent cutout of a four-legged animal into a walking puppet, in the browser
+- [**microverse-commands**](https://github.com/S2800-0/microverse-commands): Turns ecology questions and model replies into strictly checked experiment proposals
+
+## Contributing
+
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE). See [NOTICE.md](NOTICE.md) and [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) for where the code came from. No generated art, photos, model weights, credentials or provider adapters are included.
